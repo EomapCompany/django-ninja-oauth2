@@ -1,4 +1,3 @@
-from abc import abstractmethod
 from typing import Any, Optional
 
 import jwt
@@ -59,6 +58,5 @@ class OAuth2AuthorizationCodeBearer(AuthBase):
         except requests.RequestException as e:
             raise Exception(f"Get public key failed with the following error: {e}.") from e
 
-    @abstractmethod
     def authenticate(self, request: HttpRequest, token_info: dict) -> Optional[Any]:
-        pass  # pragma: no cover
+        return token_info  # pragma: no cover
