@@ -4,6 +4,10 @@ version = "0.1.0"
 description = ""
 authors = ["Marcel <siegmann@eomap.de>"]
 readme = "README.md"
+packages = [
+    { include = "ninja_oauth2" }
+]
+
 
 [tool.poetry.dependencies]
 python = "^3.7"
