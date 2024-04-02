@@ -59,4 +59,4 @@ class OAuth2AuthorizationCodeBearer(AuthBase):
             raise Exception(f"Get public key failed with the following error: {e}.") from e
 
     def authenticate(self, request: HttpRequest, token_info: dict) -> Optional[Any]:
-        return token_info  # pragma: no cover
+        return token_info

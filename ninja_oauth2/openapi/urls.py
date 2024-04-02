@@ -35,7 +35,7 @@ def get_openapi_urls(api: "NinjaAPI") -> List[Any]:
             )
 
             redirect_view = partial(oauth2_redirect_view, api=api)
-            redirect_url = urljoin(api.docs_url, "oauth2-redirect.html")
+            redirect_url = urljoin(api.docs_url, "oauth2-redirect.html").lstrip("/")
             result.append(
                 path(redirect_url, redirect_view, name="openapi-redirect-view"),
             )
