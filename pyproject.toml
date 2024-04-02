@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "django-ninja-oauth2"
+version = "0.1.0"
+description = ""
+authors = ["Marcel <siegmann@eomap.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+django-ninja = "^1.1.0"
+pyjwt = {extras = ["crypto"], version = "^2.8.0"}
+requests = "^2.31.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.3.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+target-version = "py37"
+line-length = 120
+
+lint.select = [
+    "B",    # flake8-bugbear
+    "C",    # flake8-comprehensions
+    "E",    # pycodestyle errors
+    "F",    # pyflakes
+    "I",    # isort
+    "PTH",  # flake8-use-pathlib
+    "UP",   # pyupgrade
+    "W",    # pycodestyle warnings
+]
