@@ -8,7 +8,6 @@ packages = [
     { include = "ninja_oauth2" }
 ]
 
-
 [tool.poetry.dependencies]
 python = "^3.7"
 django-ninja = "^1.1.0"
