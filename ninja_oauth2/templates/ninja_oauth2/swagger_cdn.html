@@ -39,6 +39,7 @@
         {% if add_auth %}
         const authJson = document.getElementById("swagger-auth").textContent;
         const authObject = JSON.parse(authJson);
+        authObject.oauth2RedirectUrl = `${window.location.protocol}//${window.location.host}${authObject.oauth2RedirectUrl}`
         
         ui.initOAuth(authObject)
         {% endif %}
