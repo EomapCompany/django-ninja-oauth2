@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 from typing import Any, Optional
+from urllib.parse import urljoin
 
 from ninja import NinjaAPI
 from ninja.openapi.docs import HttpRequest, HttpResponse, Swagger, _csrf_needed, _render_cdn_template
@@ -22,6 +23,10 @@ class SwaggerOAuth2(Swagger):
 
     def render_page(self, request: HttpRequest, api: "NinjaAPI", **kwargs: Any) -> HttpResponse:
         self.settings["url"] = self.get_openapi_url(api, kwargs)
+
+        if self.auth:
+            self.settings["oauth2RedirectUrl"] = urljoin(api.docs_url, "oauth2-redirect.html")
+
         context = {
             "swagger_settings": json.dumps(self.settings, indent=1),
             "api": api,
