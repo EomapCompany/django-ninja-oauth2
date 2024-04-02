@@ -8,9 +8,6 @@ from ninja_oauth2.openapi.urls import get_openapi_urls
 
 
 class NinjaAPIOAuth2(NinjaAPI):
-    def __init__(self):
-        super().__init__()
-
     def _get_urls(self) -> List[Union[URLResolver, URLPattern]]:
         result = get_openapi_urls(self)
 
