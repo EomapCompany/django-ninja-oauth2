@@ -35,7 +35,7 @@
         {% endif %}
 
         {% if add_auth %}
-        configObject.oauth2RedirectUrl = `${window.location.protocol}//${window.location.host}${configObject.oauth2RedirectUrl}`
+        configObject.oauth2RedirectUrl = `${window.location.protocol}//${window.location.host}/${configObject.oauth2RedirectUrl}`
         console.log(configObject.oauth2RedirectUrl)
         {% endif %}
 

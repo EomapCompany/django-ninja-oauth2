@@ -1,10 +1,10 @@
 from functools import partial
 from typing import TYPE_CHECKING, Any, List
-from urllib.parse import urljoin
 
 from django.urls import path
 from ninja.openapi.views import openapi_json, openapi_view
 
+from ninja_oauth2.openapi.utils import get_oauth2_redirect_url
 from ninja_oauth2.openapi.views import oauth2_redirect_view
 
 if TYPE_CHECKING:
@@ -35,7 +35,7 @@ def get_openapi_urls(api: "NinjaAPI") -> List[Any]:
             )
 
             redirect_view = partial(oauth2_redirect_view, api=api)
-            redirect_url = urljoin(api.docs_url, "oauth2-redirect.html").lstrip("/")
+            redirect_url = get_oauth2_redirect_url(api.docs_url)
             result.append(
                 path(redirect_url, redirect_view, name="openapi-redirect-view"),
             )
