@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "django-ninja-oauth2"
 version = "0.1.0"
-description = ""
+description = "Django Ninja OAuth2 package enables support of OAuth2 / OpenID Connect Authorization Code Flow for your swagger documentation."
 authors = ["Marcel <siegmann@eomap.de>"]
 readme = "README.md"
 packages = [
