@@ -55,3 +55,33 @@ api = NinjaAPIOAuth2(
 def add(request, a: int, b: int):
     return {"result": a + b}
 ```
+
+If you want to check the encoded jwt token against some condition, you can extend the OAuth2AuthorizationCodeBearer
+in the following way:
+
+```Python
+from typing import Optional, Any
+from django.http import HttpRequest
+from ninja_oauth2 import NinjaAPIOAuth2, SwaggerOAuth2
+from ninja_oauth2.security.oauth2 import OAuth2AuthorizationCodeBearer
+
+class MyOAuth2(OAuth2AuthorizationCodeBearer):
+    # token_info returns the encoded jwt token
+    def authenticate(self, request: HttpRequest, token_info: dict) -> Optional[Any]:
+        if token_info["resource_access"]["<clien_id>"]["roles"] == "admin":
+            return token_info
+        # Otherwise it will return a 401 unauthorized
+
+        
+oauth2 = MyOAuth2(
+    authorization_url="https://test.com/auth/realms/<realm>/protocol/openid-connect/auth",
+    token_url="https://test.com/auth/realms/<realm>/protocol/openid-connect/token",
+    public_key_url="https://test.com/auth/realms/<realm>"
+)
+
+api = NinjaAPIOAuth2(
+    docs=SwaggerOAuth2(
+        auth={"clientId": "<client_id>"}
+    ),
+    auth=oauth2)
+```
