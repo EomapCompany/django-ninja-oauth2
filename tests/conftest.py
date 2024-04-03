@@ -30,9 +30,7 @@ def test_base_path():
 
 @pytest.fixture()
 def private_pem_key(test_base_path):
-    with open(
-            os.path.join(test_base_path, "data/auth/private_key.txt")
-    ) as fobj:
+    with Path.open(Path(test_base_path, "data/auth/private_key.txt")) as fobj:
         data = fobj.read()
 
     return data.encode("utf-8")
@@ -40,9 +38,7 @@ def private_pem_key(test_base_path):
 
 @pytest.fixture()
 def public_pem_key(test_base_path):
-    with open(
-            os.path.join(test_base_path, "data/auth/public_key.txt")
-    ) as fobj:
+    with Path.open(Path(test_base_path, "data/auth/public_key.txt")) as fobj:
         data = fobj.read()
 
     return data.encode("utf-8")

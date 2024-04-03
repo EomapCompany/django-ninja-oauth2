@@ -19,7 +19,7 @@ class TestOAuth2AuthorizationCodeBearer:
         return OAuth2AuthorizationCodeBearer(
             authorization_url="https://example.com/auth",
             token_url="https://example.com/token",
-            public_key_url="https://example.com/public_key"
+            public_key_url="https://example.com/public_key",
         )
 
     @pytest.fixture
@@ -31,23 +31,23 @@ class TestOAuth2AuthorizationCodeBearer:
             authorization_url="https://example.com/auth",
             token_url="https://example.com/token",
             public_key_url="https://example.com/public_key",
-            auto_error=False
+            auto_error=False,
         )
 
     def test_init(self, oauth2):
         assert oauth2.public_key_url == "https://example.com/public_key"
         assert oauth2.auto_error is True
-        assert hasattr(oauth2, 'public_key')
-        assert hasattr(oauth2, 'openapi_flows')
+        assert hasattr(oauth2, "public_key")
+        assert hasattr(oauth2, "openapi_flows")
 
-    @patch('requests.get')
+    @patch("requests.get")
     def test_get_public_key_failure(self, mock_get, oauth2):
         mock_get.side_effect = RequestException()
 
         with pytest.raises(Exception):  # noqa: B017
             oauth2._get_public_key()
 
-    @patch('requests.get')
+    @patch("requests.get")
     def test_get_public_key_success(self, mock_get, oauth2):
         mock_response = Mock(spec=Response)
         mock_response.raise_for_status.return_value = None
@@ -67,7 +67,7 @@ class TestOAuth2AuthorizationCodeBearer:
         assert result["name"] == "Max Mustermann"
         assert result["preferred_username"] == "max"
         assert result["email"] == "max@mustermann.de"
-        assert result["resource_access"] == {'test': {'roles': ['full-access']}}
+        assert result["resource_access"] == {"test": {"roles": ["full-access"]}}
 
     def test_call_with_missing_authorization_header(self, oauth2):
         request = Mock(spec=HttpRequest)

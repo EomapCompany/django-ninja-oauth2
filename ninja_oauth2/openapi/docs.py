@@ -1,7 +1,6 @@
 import json
 from pathlib import Path
 from typing import Any, Optional
-from urllib.parse import urljoin
 
 from ninja import NinjaAPI
 from ninja.openapi.docs import HttpRequest, HttpResponse, Swagger, _csrf_needed, _render_cdn_template

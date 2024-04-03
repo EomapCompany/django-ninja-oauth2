@@ -25,13 +25,10 @@ def test_swagger_docs(mock_get_public_key, public_pem_key):
     oauth2 = OAuth2AuthorizationCodeBearer(
         authorization_url="https://test.com/auth/realms/test/protocol/openid-connect/auth",
         token_url="https://test.com/auth/realms/test/protocol/openid-connect/token",
-        public_key_url="https://test.com/auth/realms/test"
+        public_key_url="https://test.com/auth/realms/test",
     )
 
-    api = NinjaAPIOAuth2(
-        docs=SwaggerOAuth2(
-            auth={"clientId": "test"}
-        ), auth=oauth2)
+    api = NinjaAPIOAuth2(docs=SwaggerOAuth2(auth={"clientId": "test"}), auth=oauth2)
 
     assert isinstance(api.docs, Swagger)
 
@@ -50,13 +47,10 @@ def test_swagger_oauth2_redirect(mock_get_public_key, public_pem_key):
     oauth2 = OAuth2AuthorizationCodeBearer(
         authorization_url="https://test.com/auth/realms/test/protocol/openid-connect/auth",
         token_url="https://test.com/auth/realms/test/protocol/openid-connect/token",
-        public_key_url="https://test.com/auth/realms/test"
+        public_key_url="https://test.com/auth/realms/test",
     )
 
-    api = NinjaAPIOAuth2(
-        docs=SwaggerOAuth2(
-            auth={"clientId": "test"}
-        ), auth=oauth2)
+    api = NinjaAPIOAuth2(docs=SwaggerOAuth2(auth={"clientId": "test"}), auth=oauth2)
 
     assert isinstance(api.docs, Swagger)
 
