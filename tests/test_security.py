@@ -87,6 +87,15 @@ class TestOAuth2AuthorizationCodeBearer:
 
         assert exc_info.value.status_code == 403
 
+    def test_call_with_another_wrong_authorization_header(self, oauth2):
+        request = Mock(spec=HttpRequest)
+        request.headers.get.return_value = "bearer"
+
+        with pytest.raises(HttpError) as exc_info:
+            oauth2(request)
+
+        assert exc_info.value.status_code == 403
+
     def test_call_with_invalid_token(self, oauth2):
         request = Mock(spec=HttpRequest)
         request.headers.get.return_value = "Bearer invalid_token"

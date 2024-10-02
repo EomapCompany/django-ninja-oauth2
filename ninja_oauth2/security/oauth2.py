@@ -31,7 +31,7 @@ class OAuth2AuthorizationCodeBearer(AuthBase):
 
         parts = authorization.split(" ")
 
-        if not authorization or (len(parts) != 2 and parts[0].lower() != "bearer"):
+        if len(parts) != 2 or parts[0].lower() != "bearer":
             if self.auto_error:
                 raise HttpError(403, "Not authenticated")
             else:
