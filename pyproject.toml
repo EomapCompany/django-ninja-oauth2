@@ -4,6 +4,7 @@ version = "0.1.4"
 description = "Django Ninja OAuth2 package enables support of OAuth2 / OpenID Connect Authorization Code Flow for your swagger documentation."
 authors = ["Marcel <siegmann@eomap.de>"]
 readme = "README.md"
+license = "MIT"
 packages = [
     { include = "ninja_oauth2" }
 ]
