@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 from ninja import NinjaAPI
 from ninja.openapi.docs import HttpRequest, HttpResponse, Swagger, _csrf_needed, _render_cdn_template
@@ -18,7 +18,7 @@ class SwaggerOAuth2(Swagger):
         "deepLinking": True,
     }
 
-    def __init__(self, settings: Optional[DictStrAny] = None, auth: Optional[DictStrAny] = None):
+    def __init__(self, settings: DictStrAny | None = None, auth: DictStrAny | None = None):
         self.auth = auth
         super().__init__(settings)
 
