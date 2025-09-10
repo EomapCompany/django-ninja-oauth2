@@ -5,7 +5,7 @@ documentation.
 
 ### Requirements
 
-- Python >= 3.8
+- Python >= 3.10
 - django >= 3.1
 - pydantic >= 2.0
 - Django-Ninja >= 1.1.0

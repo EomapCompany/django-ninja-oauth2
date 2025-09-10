@@ -1,6 +1,6 @@
-"""Django Ninja - Fast Django REST framework"""
+"""Django Ninja OAuth2 library"""
 
-__version__ = "1.1.0"
+__version__ = "0.1.5"
 
 from ninja_oauth2.main import NinjaAPIOAuth2
 from ninja_oauth2.openapi.docs import SwaggerOAuth2

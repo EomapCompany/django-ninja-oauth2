@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import Any
 
 import jwt
 import requests
@@ -20,7 +20,7 @@ class OAuth2AuthorizationCodeBearer(AuthBase):
 
         super().__init__()
 
-    def __call__(self, request: HttpRequest) -> Optional[Any]:
+    def __call__(self, request: HttpRequest) -> Any | None:
         authorization = request.headers.get("Authorization")
 
         if not authorization:
@@ -65,5 +65,5 @@ class OAuth2AuthorizationCodeBearer(AuthBase):
         except requests.RequestException as e:
             raise Exception(f"Get public key failed with the following error: {e}.") from e
 
-    def authenticate(self, request: HttpRequest, token_info: dict) -> Optional[Any]:
+    def authenticate(self, request: HttpRequest, token_info: dict) -> Any | None:
         return token_info
